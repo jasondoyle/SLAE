@@ -1,5 +1,5 @@
-; tcp_bind_shell.nasm
-; author: Jason Doyle
+; SLAE Assignment #1: TCP Bind Shell Linux/x86 shellcode
+; Author: Jason Doyle (@_jasondoyle)
 
 global _start
 
